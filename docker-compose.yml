@@ -1,0 +1,52 @@
+services:
+  hams:
+    image: noman501/notification-services:latest
+    build: .
+    container_name: hams
+    hostname: hams
+    command: ["npm", "run", "hams"]
+    restart: always
+    shm_size: "512mb"
+    environment:
+      - TZ=Asia/Dhaka
+    volumes:
+      - wa_auth:/app/.wwebjs_auth
+
+  fac:
+    image: noman501/notification-services:latest
+    container_name: fac
+    hostname: fac
+    command: ["npm", "run", "fac"]
+    restart: always
+    shm_size: "512mb"
+    environment:
+      - TZ=Asia/Dhaka
+    volumes:
+      - wa_auth:/app/.wwebjs_auth
+
+  epic:
+    image: noman501/notification-services:latest
+    container_name: epic
+    hostname: epic
+    command: ["npm", "run", "epic"]
+    restart: always
+    shm_size: "512mb"
+    environment:
+      - TZ=Asia/Dhaka
+    volumes:
+      - wa_auth:/app/.wwebjs_auth
+
+  concheck:
+    image: noman501/notification-services:latest
+    container_name: concheck
+    hostname: concheck
+    command: ["npm", "run", "concheck"]
+    restart: always
+    shm_size: "512mb"
+    environment:
+      - TZ=Asia/Dhaka
+    volumes:
+      - wa_auth:/app/.wwebjs_auth
+
+volumes:
+  wa_auth:
